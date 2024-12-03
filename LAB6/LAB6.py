@@ -15,41 +15,41 @@ class DataAnalysisApp(QMainWindow):
         super().__init__()
         self.initUI()
 
-        self.data = None  # Placeholder for the data
+        self.data = None  
 
     def initUI(self):
         self.setWindowTitle("Data Analysis Tool")
         self.setGeometry(100, 100, 800, 600)
 
-        # Main container widget
+       
         container = QWidget()
         self.setCentralWidget(container)
 
-        # Layouts
+       
         self.layout = QVBoxLayout()
         container.setLayout(self.layout)
 
-        # Button to load data
+        
         self.loadButton = QPushButton("Load CSV File")
         self.loadButton.clicked.connect(self.load_data)
         self.layout.addWidget(self.loadButton)
 
-        # Label to show statistics
+       
         self.statsLabel = QLabel("Dataset statistics will appear here")
         self.layout.addWidget(self.statsLabel)
 
-        # Dropdown for chart selection
+       
         self.chartSelector = QComboBox()
         self.chartSelector.addItems(["Line Chart", "Histogram", "Pie Chart"])
         self.chartSelector.currentIndexChanged.connect(self.update_chart)
         self.layout.addWidget(self.chartSelector)
 
-        # Canvas for matplotlib
+       
         self.canvas = FigureCanvas(Figure(figsize=(5, 3)))
         self.layout.addWidget(self.canvas)
         self.ax = self.canvas.figure.add_subplot(111)
 
-        # Controls for real-time data addition
+       
         self.dataInputLayout = QHBoxLayout()
         self.newValueInput = QLineEdit()
         self.newValueInput.setPlaceholderText("Enter new value")
